@@ -9,9 +9,18 @@
  	  <properties>
 		  <project.build.sourceEncoiding>utf-8</project.build.sourceEncoiding>
 		  <project.build.outputEncoiding>utf-8</project.build.outputEncoiding>
+	 	  <!-- <maven.test.skip>true</maven.test.skip> -->
 	  </properties>
 
   <dependencies>
+	  <!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>4.12</version>
+	</dependency>
+
+
 	  <!-- https://mvnrepository.com/artifact/com.oracle/ojdbc6 -->
 	<dependency>
 	    <groupId>com.oracle</groupId>
@@ -67,6 +76,7 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+          <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
 

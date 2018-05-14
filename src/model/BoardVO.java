@@ -1,5 +1,6 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,6 +8,95 @@ public class BoardVO {
 	Integer id, gid, seq, lev, cnt;
 	Date reg_date;
 	String pname, pw, title, content, upfile;
+
+	 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cnt == null) ? 0 : cnt.hashCode());
+		result = prime * result + ((content == null) ? 0 : content.hashCode());
+		result = prime * result + ((gid == null) ? 0 : gid.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((lev == null) ? 0 : lev.hashCode());
+		result = prime * result + ((pname == null) ? 0 : pname.hashCode());
+		result = prime * result + ((pw == null) ? 0 : pw.hashCode());
+		result = prime * result + ((seq == null) ? 0 : seq.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((upfile == null) ? 0 : upfile.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BoardVO other = (BoardVO) obj;
+		if (cnt == null) {
+			if (other.cnt != null)
+				return false;
+		} else if (!cnt.equals(other.cnt))
+			return false;
+		if (content == null) {
+			if (other.content != null)
+				return false;
+		} else if (!content.equals(other.content))
+			return false;
+		if (gid == null) {
+			if (other.gid != null)
+				return false;
+		} else if (!gid.equals(other.gid))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (lev == null) {
+			if (other.lev != null)
+				return false;
+		} else if (!lev.equals(other.lev))
+			return false;
+		if (pname == null) {
+			if (other.pname != null)
+				return false;
+		} else if (!pname.equals(other.pname))
+			return false;
+		if (pw == null) {
+			if (other.pw != null)
+				return false;
+		} else if (!pw.equals(other.pw))
+			return false;
+		if (seq == null) {
+			if (other.seq != null)
+				return false;
+		} else if (!seq.equals(other.seq))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+
+		if (upfile == null) {
+			if (other.upfile != null)
+				return false;
+		} else if (!upfile.equals(other.upfile))
+			return false;
+
+		if (reg_date == null) {
+			if (other.reg_date != null)
+				return false;
+		} else if (!sdf.format(reg_date).equals(sdf.format(other.reg_date)))
+			return false;
+
+
+		return true;
+	}
 
 	public Integer getId() {
 		return id;

@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,16 +18,42 @@ public class BoardDAO {
 	ResultSet rs;
 	String sql;
 
-	public BoardDAO() {
+
+/*	public BoardDAO() {
+		DataSource ds = null;
 		try {
 			Context init = new InitialContext();
-			DataSource ds = (DataSource)init.lookup("java:comp/env/oooo");
-
+			System.out.println("init:"+init);
+			ds = (DataSource)init.lookup("java:comp/env/oooo");
 			con = ds.getConnection();
 			System.out.println(con);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}*/
+
+
+	public BoardDAO() {
+		try {
+			Context init = new InitialContext();
+			System.out.println(init);
+			DataSource ds = (DataSource)init.lookup("java:comp/env/oooo");
+			con = ds.getConnection();
+
+		} catch (Exception e) {
+			//e.printStackTrace();
+
+			 try{//에러방지를 위한 처리구간
+				 String driver="oracle.jdbc.driver.OracleDriver";
+				 Class.forName(driver);
+				 String url = "jdbc:oracle:thin:@localhost:1521:xe";
+				 String id="hr";
+				 String pw ="hr";
+
+			//2. 커넥션 생성
+			 con = DriverManager.getConnection(url,id,pw);
+			 }catch(Exception e1) {}
 		}
 	}
 
@@ -166,7 +193,7 @@ public class BoardDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//close()안해요 
+		//close()안해요
 
 	}
 
